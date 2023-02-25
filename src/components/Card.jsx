@@ -1,8 +1,9 @@
-import { ImPlus } from 'react-icons/im';
+import { ImPlus, ImHeart } from 'react-icons/im';
 
 function Card() {
   return (
     <div className="cards">
+      <ImHeart className="favorite" />
       <img width={200} height={200} src="/img/sneakers1.jpeg" alt="cartImg" />
       <p>Кроссовки мужские NIKE</p>
       <div className="cardBottom">
