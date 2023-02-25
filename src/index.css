@@ -1,8 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: Inter;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -10,4 +10,93 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.wrapper {
+  background: #ffffff;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04);
+  border-radius: 20px;
+  max-width: 1200px;
+  margin: 50px auto;
+}
+
+header {
+  border-bottom: 1px solid #eaeaea;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px;
+}
+
+img {
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+}
+ul {
+  display: flex;
+}
+
+li {
+  list-style: none;
+  margin-right: 30px;
+}
+
+h1 {
+  margin: 20px 40px;
+}
+
+h3,
+p {
+  margin: 0;
+  word-wrap: break-word;
+}
+h3 {
+  text-transform: uppercase;
+}
+
+.cart,
+.profileLogo {
+  width: 20px;
+  height: 20px;
+  margin: auto 20px;
+}
+
+.content {
+  padding: 40px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cards {
+  border: 3px solid #e3dbdb;
+  padding: 20px;
+  width: 210px;
+  border-radius: 40px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.cardBottom {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.priceButton {
+  display: flex;
+  flex-direction: column;
+}
+
+.button {
+  box-sizing: border-box;
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  border-radius: 8px;
 }

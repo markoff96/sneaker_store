@@ -1,23 +1,85 @@
-import logo from './logo.svg';
 import './App.css';
+import { ImCart, ImUser, ImPlus, ImMinus } from 'react-icons/im';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="wrapper">
+      <header>
+        <div className="headerLeft">
+          <img width={60} height={50} src="/img/logo.png" />
+          <div className="headerInfo">
+            <h3> Sneacker shop</h3>
+            <p>Магазин </p>
+          </div>
+        </div>
+        <ul className="headerRight">
+          <li>
+            <ImCart className="cart" />
+            <span>100 RUB</span>
+          </li>
+          <li>
+            <ImUser className="profileLogo" />
+          </li>
+        </ul>
       </header>
+      <h1>Все кроссовки</h1>
+      <div className="content">
+        <div className="cards">
+          <img width={200} height={200} src="/img/sneakers1.jpeg" />
+          <p>Кроссовки мужские NIKE</p>
+          <div className="cardBottom">
+            <div className="priceButton">
+              <span> Цена:</span>
+              <b> 12 999 RUB</b>
+            </div>
+            <button>
+              <ImPlus className="button" />
+            </button>
+          </div>
+        </div>
+
+        <div className="cards">
+          <img width={200} height={200} src="/img/sneakers1.jpeg" />
+          <p>Кроссовки мужские NIKE</p>
+          <div className="cardBottom">
+            <div className="priceButton">
+              <span> Цена:</span>
+              <b> 12 999 RUB</b>
+            </div>
+            <button>
+              <ImPlus className="button" />
+            </button>
+          </div>
+        </div>
+
+        <div className="cards">
+          <img width={200} height={200} src="/img/sneakers1.jpeg" />
+          <p>Кроссовки мужские NIKE</p>
+          <div className="cardBottom">
+            <div className="priceButton">
+              <span> Цена:</span>
+              <b> 12 999 RUB</b>
+            </div>
+            <button>
+              <ImPlus className="button" />
+            </button>
+          </div>
+        </div>
+
+        <div className="cards">
+          <img width={200} height={200} src="/img/sneakers1.jpeg" />
+          <p>Кроссовки мужские NIKE</p>
+          <div className="cardBottom">
+            <div className="priceButton">
+              <span> Цена:</span>
+              <b> 12 999 RUB</b>
+            </div>
+            <button>
+              <ImPlus className="button" />
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
