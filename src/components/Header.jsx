@@ -6,7 +6,7 @@ function Header() {
       <div className="headerLeft">
         <img width={60} height={50} src="/img/logo.png" alt="" />
         <div className="headerInfo">
-          <h3> Sneaker shop</h3>
+          <h3> random shop</h3>
           <p>Магазин </p>
         </div>
       </div>

@@ -1,15 +1,15 @@
 import { ImPlus, ImHeart } from 'react-icons/im';
 
-function Card() {
+function Cards({ title, price, image }) {
   return (
     <div className="cards">
       <ImHeart className="favorite" />
-      <img width={200} height={200} src="/img/sneakers1.jpeg" alt="cartImg" />
-      <p>Кроссовки мужские NIKE</p>
+      <img width={200} height={200} src={image} alt={title} />
+      <p>{title}</p>
       <div className="cardBottom">
         <div className="priceButton">
           <span> Цена:</span>
-          <b> 12 999 RUB</b>
+          <b>{price + ' USD'}</b>
         </div>
         <button>
           <ImPlus className="button" />
@@ -19,4 +19,4 @@ function Card() {
   );
 }
 
-export default Card;
+export default Cards;
