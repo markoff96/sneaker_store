@@ -90,7 +90,7 @@ h3 {
   flex-wrap: wrap;
 }
 
-.cards {
+.card {
   border: 3px solid #e3dbdb;
   padding: 20px;
   width: 210px;
@@ -100,7 +100,7 @@ h3 {
   transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
 }
 
-.cards:hover {
+.card:hover {
   box-shadow: 10px 30px 30px rgba(0, 0, 0, 0.05);
   transform: translateY(-5px);
 }

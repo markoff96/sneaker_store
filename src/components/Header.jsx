@@ -4,7 +4,12 @@ function Header() {
   return (
     <header>
       <div className="headerLeft">
-        <img width={60} height={50} src="/img/logo.png" alt="" />
+        <img
+          width={60}
+          height={50}
+          src="/img/logo.png"
+          alt="здесь будет тайтл из апи"
+        />
         <div className="headerInfo">
           <h3> Sneaker shop</h3>
           <p>Магазин </p>

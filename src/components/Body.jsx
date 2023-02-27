@@ -1,5 +1,6 @@
 import { ImSearch } from 'react-icons/im';
 import Card from './Card';
+
 function Body() {
   return (
     <>
