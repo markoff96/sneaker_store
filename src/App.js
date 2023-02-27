@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import Header from './components/Header';
 import Body from './components/Body';
 // import SideMenu from './components/SideMenu';
-import Cards from './components/Cards';
+import Cards from './components/Cards/Cards';
 import { ImSearch } from 'react-icons/im';
 
 function App() {
