@@ -1,11 +1,14 @@
+import styles from './Body.module.css';
+console.log(styles);
+
 function Body(props) {
   return (
     <>
-      <div className="headerSearch">
+      <div className={styles.body_search}>
         <h1>Все товары</h1>
         {props.children}
       </div>
-      <div className="content"></div>
+      <div className={styles.content}></div>
     </>
   );
 }

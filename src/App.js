@@ -2,8 +2,8 @@ import './App.css';
 import { useEffect, useState } from 'react';
 import Header from './components/Header';
 import Body from './components/Body';
-// import SideMenu from './components/SideMenu';
-import Cards from './components/Cards/Cards';
+import SideMenu from './components/SideMenu';
+import Cards from './components/Cards';
 import { ImSearch } from 'react-icons/im';
 
 function App() {
@@ -28,6 +28,7 @@ function App() {
 
   return (
     <div className="wrapper">
+      {/* <SideMenu /> */}
       <Header />
       <Body>
         <div className="searchBlock">
