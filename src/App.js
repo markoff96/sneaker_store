@@ -15,15 +15,13 @@ function App() {
     (async function getProductData() {
       const response = await fetch('https://fakestoreapi.com/products');
       setCardsInfo(await response.json());
+      try {
+        const errCheck = await response.type;
+        console.log(errCheck, 'Downloaded successful');
+      } catch (error) {
+        console.error('Downloading error', error);
+      }
     })();
-
-    // fetch('https://fakestoreapi.com/products')
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     setCardsInfo(data);
-    //   })
-    //   .catch((err) => console.log('Downloading error'));
-    // // .finally(() =>)
   }, []);
 
   return (

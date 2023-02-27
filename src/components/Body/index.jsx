@@ -1,5 +1,4 @@
 import styles from './Body.module.css';
-console.log(styles);
 
 function Body(props) {
   return (

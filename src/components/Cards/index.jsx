@@ -1,6 +1,5 @@
 import { ImPlus, ImHeart } from 'react-icons/im';
 import styles from './Cards.module.css';
-console.log(styles);
 
 function Cards({ title, price, image }) {
   return (
