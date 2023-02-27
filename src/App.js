@@ -4,10 +4,12 @@ import Header from './components/Header';
 import Body from './components/Body';
 // import SideMenu from './components/SideMenu';
 import Cards from './components/Cards';
+import { ImSearch } from 'react-icons/im';
 
 function App() {
   const [cardsInfo, setCardsInfo] = useState([]);
   const [isLoading, setLoading] = useState(false);
+  const [inputVal, setInputVal] = useState('');
 
   useEffect(() => {
     (async function getProductData() {
@@ -27,15 +29,25 @@ function App() {
   return (
     <div className="wrapper">
       <Header />
-      <Body />
+      <Body>
+        <div className="searchBlock">
+          <ImSearch />
+          <input
+            value={inputVal}
+            onChange={(e) => setInputVal(e.target.value)}
+            className="search"
+            placeholder="Search..."
+          />
+        </div>
+      </Body>
       <div className="content">
         {isLoading ? (
           <h1>Loading</h1>
         ) : (
           cardsInfo
-            // .filter((obj) =>
-            //   obj.title.toLowerCase().includes(inputVal.toLowerCase())
-            // )
+            .filter((obj) =>
+              obj.title.toLowerCase().includes(inputVal.toLowerCase())
+            )
             .map((obj) => (
               <Cards
                 key={obj.id}
@@ -46,7 +58,6 @@ function App() {
             ))
         )}
       </div>
-      {/* <SideMenu /> */}
     </div>
   );
 }
