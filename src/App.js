@@ -53,6 +53,8 @@ function App() {
                 title={obj.title}
                 price={obj.price}
                 image={obj.image}
+                onFavorite={() => console.log('ADDED TO FAVORITE')}
+                onCart={() => console.log('added to ca')}
               />
             ))
         )}
