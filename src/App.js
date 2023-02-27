@@ -6,15 +6,16 @@ import SideMenu from './components/SideMenu';
 
 function App() {
   const [cardsInfo, setCardsInfo] = useState([]);
+
   useEffect(() => {
     (async function getProductData() {
-      const response = await fetch('https://fakestoreapi.com/products;');
+      const response = await fetch('https://fakestoreapi.com/products');
       setCardsInfo(await response.json());
       try {
-        const errCheck = await response;
-        console.log(errCheck + 'successful');
-      } catch (err) {
-        console.log('Error dow');
+        const errCheck = await response.type;
+        console.log(errCheck, 'Downloaded successful');
+      } catch (error) {
+        console.error('Downloading error', error);
       }
     })();
 
