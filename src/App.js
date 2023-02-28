@@ -1,85 +1,38 @@
 import './App.css';
-import { ImCart, ImUser, ImPlus, ImMinus } from 'react-icons/im';
+import { useEffect, useState } from 'react';
+import Header from './components/Header';
+import Body from './components/Body';
+import SideMenu from './components/SideMenu';
 
 function App() {
+  const [cardsInfo, setCardsInfo] = useState([]);
+
+  useEffect(() => {
+    (async function getProductData() {
+      const response = await fetch('https://fakestoreapi.com/products');
+      setCardsInfo(await response.json());
+      try {
+        const errCheck = await response.type;
+        console.log(errCheck, 'Downloaded successful');
+      } catch (error) {
+        console.error('Downloading error', error);
+      }
+    })();
+
+    // fetch('https://fakestoreapi.com/products')
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     setCardsInfo(data);
+    //   })
+    //   .catch((err) => console.log('Downloading error'));
+    // // .finally(() =>)
+  }, []);
+
   return (
     <div className="wrapper">
-      <header>
-        <div className="headerLeft">
-          <img width={60} height={50} src="/img/logo.png" />
-          <div className="headerInfo">
-            <h3> Sneacker shop</h3>
-            <p>Магазин </p>
-          </div>
-        </div>
-        <ul className="headerRight">
-          <li>
-            <ImCart className="cart" />
-            <span>100 RUB</span>
-          </li>
-          <li>
-            <ImUser className="profileLogo" />
-          </li>
-        </ul>
-      </header>
-      <h1>Все кроссовки</h1>
-      <div className="content">
-        <div className="cards">
-          <img width={200} height={200} src="/img/sneakers1.jpeg" />
-          <p>Кроссовки мужские NIKE</p>
-          <div className="cardBottom">
-            <div className="priceButton">
-              <span> Цена:</span>
-              <b> 12 999 RUB</b>
-            </div>
-            <button>
-              <ImPlus className="button" />
-            </button>
-          </div>
-        </div>
-
-        <div className="cards">
-          <img width={200} height={200} src="/img/sneakers1.jpeg" />
-          <p>Кроссовки мужские NIKE</p>
-          <div className="cardBottom">
-            <div className="priceButton">
-              <span> Цена:</span>
-              <b> 12 999 RUB</b>
-            </div>
-            <button>
-              <ImPlus className="button" />
-            </button>
-          </div>
-        </div>
-
-        <div className="cards">
-          <img width={200} height={200} src="/img/sneakers1.jpeg" />
-          <p>Кроссовки мужские NIKE</p>
-          <div className="cardBottom">
-            <div className="priceButton">
-              <span> Цена:</span>
-              <b> 12 999 RUB</b>
-            </div>
-            <button>
-              <ImPlus className="button" />
-            </button>
-          </div>
-        </div>
-
-        <div className="cards">
-          <img width={200} height={200} src="/img/sneakers1.jpeg" />
-          <p>Кроссовки мужские NIKE</p>
-          <div className="cardBottom">
-            <div className="priceButton">
-              <span> Цена:</span>
-              <b> 12 999 RUB</b>
-            </div>
-            <button>
-              <ImPlus className="button" />
-            </button>
-          </div>
-        </div>
-      </div>
+      <Header />
+      <Body />
+      <SideMenu />
     </div>
   );
 }
