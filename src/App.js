@@ -1,5 +1,5 @@
 import './App.css';
-import { useEffect, useState } from 'react';
+import { Children, useEffect, useState } from 'react';
 import Header from './components/Header';
 import Body from './components/Body';
 import SideMenu from './components/SideMenu';
@@ -10,6 +10,11 @@ function App() {
   const [cardsInfo, setCardsInfo] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const [inputVal, setInputVal] = useState('');
+  const [isAdded, setAdded] = useState(false);
+
+  const onPlusBtn = () => {
+    setAdded(!isAdded);
+  };
 
   useEffect(() => {
     (async function getProductData() {
@@ -53,8 +58,9 @@ function App() {
                 title={obj.title}
                 price={obj.price}
                 image={obj.image}
-                onFavorite={() => console.log('ADDED TO FAVORITE')}
-                onCart={() => console.log('added to ca')}
+                onPlusBtn={onPlusBtn}
+                likeBtn={isAdded ? './img/like.png' : './img/plus.png'}
+                addButton={isAdded ? './img/checked.png' : './img/plus.png'}
               />
             ))
         )}

@@ -1,11 +1,10 @@
 import styles from './Cards.module.css';
 
-function Cards({ title, price, image, onCart, onFavorite }) {
+function Cards({ title, price, image, onPlusBtn, addButton, likeBtn }) {
   return (
     <div className={styles.cards}>
       <img
-        onClick={onFavorite}
-        src="./img/like.png"
+        src={'./img/like.png'}
         className={styles.favorite}
         alt="like button"
       ></img>
@@ -17,11 +16,11 @@ function Cards({ title, price, image, onCart, onFavorite }) {
           <b>{price + ' USD'}</b>
         </div>
         <img
-          onClick={onCart}
+          onClick={onPlusBtn}
+          src={addButton}
           className={styles.addButton}
-          alt="add to cart button"
-          src="./img/plus.png"
-        />
+          alt="add in cart button"
+        ></img>
       </div>
     </div>
   );
