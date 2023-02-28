@@ -1,6 +1,14 @@
 import styles from './Cards.module.css';
+import { useState } from 'react';
 
-function Cards({ title, price, image, onPlusBtn, addButton, likeBtn }) {
+function Cards({ title, price, image, onPlus }) {
+  const [isAdded, setAdded] = useState(false);
+
+  const onClickPlus = () => {
+    setAdded(!isAdded);
+    onPlus({ title, price, image });
+  };
+
   return (
     <div className={styles.cards}>
       <img
@@ -16,8 +24,8 @@ function Cards({ title, price, image, onPlusBtn, addButton, likeBtn }) {
           <b>{price + ' USD'}</b>
         </div>
         <img
-          onClick={onPlusBtn}
-          src={addButton}
+          onClick={onClickPlus}
+          src={isAdded ? './img/checked.png' : './img/plus.png'}
           className={styles.addButton}
           alt="add in cart button"
         ></img>

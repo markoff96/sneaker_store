@@ -1,7 +1,7 @@
 import { ImCart, ImUser } from 'react-icons/im';
 import styles from './Header.module.css';
 
-function Header() {
+function Header(props) {
   return (
     <header>
       <div className={styles.headerLeft}>
@@ -13,7 +13,7 @@ function Header() {
       </div>
       <ul className={styles.headerRight}>
         <li>
-          <ImCart className={styles.cart} />
+          <ImCart onClick={props.onClickCartOpen} className={styles.cart} />
           <span>99999 USD</span>
         </li>
         <li>

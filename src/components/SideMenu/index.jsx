@@ -1,28 +1,23 @@
 import { HiArrowSmRight, HiXCircle } from 'react-icons/hi';
 import styles from './SideMenu.module.css';
 
-function SideMenu() {
+function SideMenu({ items = [], onCloseCart }) {
   return (
     <div className={styles.overlay}>
       <div className={styles.SideMenu}>
         <div>
           <h2>Корзина</h2>
-          <HiXCircle />
+          <HiXCircle onClick={onCloseCart} />
         </div>
 
         <div className={styles.cartItems}>
-          <img
-            width={100}
-            height={100}
-            src="/img/sneakers1.jpeg"
-            alt="cartImg"
-          />
-
-          <div>
-            <p className={styles.cartItemsP}>Кроссовки мужские NIKE</p>
-            <b>12 999 RUB</b>
-          </div>
-          <HiXCircle />
+          {items.map((obj) => (
+            <div className={styles.cartItems}>
+              <img width={100} src={obj.image} alt={obj.title} />
+              <p>{obj.title}</p>
+              <h3>{obj.price}</h3>
+            </div>
+          ))}
         </div>
 
         <div className={styles.resultAmmount}>
