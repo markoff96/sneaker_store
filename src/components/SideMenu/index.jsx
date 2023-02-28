@@ -13,12 +13,12 @@ function SideMenu({ items = [], onCloseCart }) {
         <div className={styles.cartItems}>
           {items.map((obj) => (
             <div className={styles.cartCards}>
+              <HiXCircle />
               <img width={70} src={obj.image} alt={obj.title} />
               <div className={styles.cartTitle}>
                 <p>{obj.title}</p>
                 <h3 style={{ marginTop: 10 }}>{obj.price + ' USD'}</h3>
               </div>
-              <HiXCircle style={{ right: 0 }} />
             </div>
           ))}
         </div>
