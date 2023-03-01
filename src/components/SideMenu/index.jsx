@@ -1,7 +1,7 @@
 import { HiArrowSmRight, HiXCircle } from 'react-icons/hi';
 import styles from './SideMenu.module.css';
 
-function SideMenu({ items = [], onCloseCart }) {
+function SideMenu({ items = [], onCloseCart, onRemoveCart }) {
   return (
     <div className={styles.overlay}>
       <div className={styles.SideMenu}>
@@ -12,13 +12,18 @@ function SideMenu({ items = [], onCloseCart }) {
 
         <div className={styles.cartItems}>
           {items.map((obj) => (
-            <div className={styles.cartCards}>
-              <HiXCircle />
+            <div key={obj.id} className={styles.cartCards}>
               <img width={70} src={obj.image} alt={obj.title} />
               <div className={styles.cartTitle}>
                 <p>{obj.title}</p>
                 <h3 style={{ marginTop: 10 }}>{obj.price + ' USD'}</h3>
               </div>
+              <img
+                width={30}
+                src="./img/close.png"
+                alt="close product button"
+                onClick={() => onRemoveCart(obj.id)}
+              />
             </div>
           ))}
         </div>

@@ -6,6 +6,8 @@ import SideMenu from './components/SideMenu';
 import Cards from './components/Cards';
 import { ImSearch } from 'react-icons/im';
 
+import axios from 'axios';
+
 function App() {
   const [cardsInfo, setCardsInfo] = useState([]);
   const [isLoading, setLoading] = useState(false);
@@ -13,10 +15,23 @@ function App() {
   const [cartOpened, setCartOpened] = useState(false);
   const [cartIems, setCartItems] = useState([]);
 
+  const savedItems = (res) => {
+    axios
+      .get('https://63f891ac5b0e4a127de8c5e0.mockapi.io/cart')
+      .then(setCartItems(res));
+  };
+
   useEffect(() => {
     (async function getProductData() {
       const response = await fetch('https://fakestoreapi.com/products');
       setCardsInfo(await response.json());
+
+      (async function getSaveCart() {
+        const savedCart = await fetch(
+          'https://63f891ac5b0e4a127de8c5e0.mockapi.io/cart'
+        );
+        setCartItems(await savedCart.json());
+      })();
       try {
         const errCheck = await response.type;
         console.log(errCheck, 'Downloaded successful');
@@ -26,10 +41,24 @@ function App() {
     })();
   }, []);
 
+  const addToCart = (obj) => {
+    axios.post('https://63f891ac5b0e4a127de8c5e0.mockapi.io/cart', obj);
+    setCartItems((prev) => [...prev, obj]);
+  };
+
+  const onRemoveCart = (id) => {
+    setCartItems((prev) => prev.filter((item) => item.id !== id));
+    axios.delete(`https://63f891ac5b0e4a127de8c5e0.mockapi.io/cart/${id}`);
+  };
+
   return (
     <div className="wrapper">
       {cartOpened && (
-        <SideMenu items={cartIems} onCloseCart={() => setCartOpened(false)} />
+        <SideMenu
+          items={cartIems}
+          onCloseCart={() => setCartOpened(false)}
+          onRemoveCart={onRemoveCart}
+        />
       )}
 
       <Header onClickCartOpen={() => setCartOpened(true)} />
@@ -58,9 +87,7 @@ function App() {
                 title={obj.title}
                 price={obj.price}
                 image={obj.image}
-                onPlus={(obj) => {
-                  setCartItems((prev) => [...prev, obj]);
-                }}
+                onPlus={(obj) => addToCart(obj)}
               />
             ))
         )}
