@@ -4,6 +4,11 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+export { default as Header } from './components/Header';
+export { default as Body } from './components/Body';
+export { default as SideMenu } from './components/SideMenu';
+export { default as Cards } from './components/Cards';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

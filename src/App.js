@@ -1,11 +1,7 @@
 import './App.css';
 import { useEffect, useState } from 'react';
-import Header from './components/Header';
-import Body from './components/Body';
-import SideMenu from './components/SideMenu';
-import Cards from './components/Cards';
+import { Cards, SideMenu, Body, Header } from './index';
 import { ImSearch } from 'react-icons/im';
-
 import axios from 'axios';
 
 function App() {
@@ -14,12 +10,6 @@ function App() {
   const [inputVal, setInputVal] = useState('');
   const [cartOpened, setCartOpened] = useState(false);
   const [cartIems, setCartItems] = useState([]);
-
-  const savedItems = (res) => {
-    axios
-      .get('https://63f891ac5b0e4a127de8c5e0.mockapi.io/cart')
-      .then(setCartItems(res));
-  };
 
   useEffect(() => {
     (async function getProductData() {
@@ -32,11 +22,11 @@ function App() {
         );
         setCartItems(await savedCart.json());
       })();
+
       try {
-        const errCheck = await response.type;
-        console.log(errCheck, 'Downloaded successful');
-      } catch (error) {
-        console.error('Downloading error', error);
+        const errChec = await fetch('https://fakestoreapi.com/products');
+      } catch (errChec) {
+        console.log('Downloading error', errChec);
       }
     })();
   }, []);
