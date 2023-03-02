@@ -15,5 +15,10 @@ header {
 .profileLogo {
   width: 20px;
   height: 20px;
-  margin: auto 20px;
+  margin: auto 10px;
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
 }

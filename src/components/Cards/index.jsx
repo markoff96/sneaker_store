@@ -1,19 +1,25 @@
 import styles from './Cards.module.css';
 import { useState } from 'react';
 
-function Cards({ title, price, image, onPlus }) {
+function Cards({ title, price, image, onPlus, onLike }) {
   const [isAdded, setAdded] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
 
   const onClickPlus = () => {
     setAdded(!isAdded);
     onPlus({ title, price, image });
   };
 
+  const onLikeBtn = () => {
+    setIsLiked(!isLiked);
+    onLike({ title, price, image });
+  };
   return (
     <div className={styles.cards}>
       <img
-        src={'./img/like.png'}
+        src={isLiked ? './img/liked.png' : './img/like.png'}
         className={styles.favorite}
+        onClick={onLikeBtn}
         alt="like button"
       ></img>
       <img width={200} height={200} src={image} alt={title} />

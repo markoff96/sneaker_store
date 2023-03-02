@@ -53,14 +53,16 @@ h3 {
 }
 
 .content {
-  padding: 40px;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px;
   flex-wrap: wrap;
 }
 
 .searchBlock {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 .search {
   border: none;

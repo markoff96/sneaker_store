@@ -1,6 +1,7 @@
 import './App.css';
 import { useEffect, useState } from 'react';
-import { Cards, SideMenu, Body, Header } from './index';
+import { Cards, SideMenu, Body, Header, Router, Favorites } from './index';
+import { Routes, Route } from 'react-router-dom';
 import { ImSearch } from 'react-icons/im';
 import axios from 'axios';
 
@@ -52,36 +53,36 @@ function App() {
       )}
 
       <Header onClickCartOpen={() => setCartOpened(true)} />
-      <Body>
-        <div className="searchBlock">
-          <ImSearch />
-          <input
-            value={inputVal}
-            onChange={(e) => setInputVal(e.target.value)}
-            className="search"
-            placeholder="Search..."
-          />
-        </div>
-      </Body>
-      <div className="content">
-        {isLoading ? (
-          <h1>Loading</h1>
-        ) : (
-          cardsInfo
-            .filter((obj) =>
-              obj.title.toLowerCase().includes(inputVal.toLowerCase())
-            )
-            .map((obj) => (
-              <Cards
-                key={obj.id}
-                title={obj.title}
-                price={obj.price}
-                image={obj.image}
-                onPlus={(obj) => addToCart(obj)}
-              />
-            ))
-        )}
-      </div>
+      <Routes>
+        <Route path="/favorites" element={<Favorites />} />
+        <Route
+          path="/"
+          element={
+            <Body>
+              {' '}
+              <div className="content">
+                {isLoading ? (
+                  <h1>Loading</h1>
+                ) : (
+                  cardsInfo
+                    .filter((obj) =>
+                      obj.title.toLowerCase().includes(inputVal.toLowerCase())
+                    )
+                    .map((obj) => (
+                      <Cards
+                        key={obj.id}
+                        title={obj.title}
+                        price={obj.price}
+                        image={obj.image}
+                        onPlus={(obj) => addToCart(obj)}
+                      />
+                    ))
+                )}
+              </div>
+            </Body>
+          }
+        />
+      </Routes>
     </div>
   );
 }
