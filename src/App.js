@@ -1,14 +1,14 @@
 import './App.css';
 import { useEffect, useState } from 'react';
-import { Cards, SideMenu, Body, Header, Router, Favorites } from './index';
+import { Cards, SideMenu, Body, Header, Favorites } from './index';
 import { Routes, Route } from 'react-router-dom';
-import { ImSearch } from 'react-icons/im';
 import axios from 'axios';
 
 function App() {
   const [cardsInfo, setCardsInfo] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const [inputVal, setInputVal] = useState('');
+  const [favorites, setFavorites] = useState([]);
   const [cartOpened, setCartOpened] = useState(false);
   const [cartIems, setCartItems] = useState([]);
 
@@ -22,6 +22,13 @@ function App() {
           'https://63f891ac5b0e4a127de8c5e0.mockapi.io/cart'
         );
         setCartItems(await savedCart.json());
+      })();
+
+      (async function getFavorites() {
+        const savedFav = await fetch(
+          'https://63f891ac5b0e4a127de8c5e0.mockapi.io/favorites'
+        );
+        setCartItems(await savedFav.json());
       })();
 
       try {
@@ -42,6 +49,17 @@ function App() {
     axios.delete(`https://63f891ac5b0e4a127de8c5e0.mockapi.io/cart/${id}`);
   };
 
+  const addToFavorite = (obj) => {
+    if (favorites.find((obj) => obj.id === obj.id)) {
+      axios.delete(
+        `https://63f891ac5b0e4a127de8c5e0.mockapi.io/favorites/${obj.id}`
+      );
+      setFavorites((prev) => prev.filter((item) => item.id !== obj.id));
+    } else {
+      axios.post('https://63f891ac5b0e4a127de8c5e0.mockapi.io/favorites', obj);
+      setFavorites((prev) => [...prev, obj]);
+    }
+  };
   return (
     <div className="wrapper">
       {cartOpened && (
@@ -54,7 +72,12 @@ function App() {
 
       <Header onClickCartOpen={() => setCartOpened(true)} />
       <Routes>
-        <Route path="/favorites" element={<Favorites />} />
+        <Route
+          path="/favorites"
+          element={
+            <Favorites addToFavorite={addToFavorite} items={favorites} />
+          }
+        />
         <Route
           path="/"
           element={
@@ -75,6 +98,7 @@ function App() {
                         price={obj.price}
                         image={obj.image}
                         onPlus={(obj) => addToCart(obj)}
+                        onLike={(obj) => addToFavorite(obj)}
                       />
                     ))
                 )}
