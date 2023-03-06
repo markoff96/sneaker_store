@@ -1,0 +1,24 @@
+header {
+  border-bottom: 1px solid #eaeaea;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+}
+
+.cart,
+.profileLogo {
+  width: 20px;
+  height: 20px;
+  margin: auto 10px;
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+}

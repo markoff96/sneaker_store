@@ -3,11 +3,20 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter as Router } from 'react-router-dom';
+
+export { default as Favorites } from './pages/Favorites';
+export { default as Header } from './components/Header';
+export { default as Body } from './components/Body';
+export { default as SideMenu } from './components/SideMenu';
+export { default as Cards } from './components/Cards';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <App />
+    </Router>
   </React.StrictMode>
 );
 
